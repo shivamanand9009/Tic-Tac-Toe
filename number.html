@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        p {
+            margin: 0;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Number Checker</h2>
+    <input type="number" id="numberInput" placeholder="Enter a number">
+    <p id="result"></p>
+</div>
+
+<script>
+    const inputField = document.getElementById('numberInput');
+    const result = document.getElementById('result');
+
+    inputField.addEventListener('input', function() {
+        const value = parseInt(inputField.value);
+
+        if (isNaN(value)) {
+            result.textContent = '';
+        } else if (value < 0) {
+            result.textContent = 'Enter a positive value';
+        } else if (value % 2 === 0) {
+            result.textContent = `Next 3 even numbers: ${value + 2}, ${value + 4}, ${value + 6}`;
+        } else {
+            result.textContent = `Next 3 odd numbers: ${value + 2}, ${value + 4}, ${value + 6}`;
+        }
+    });
+</script>
+
+</body>
+</html>
